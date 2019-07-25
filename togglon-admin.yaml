@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: togglon-admin
+spec:
+  type: LoadBalancer
+  selector:
+    app: togglon-admin
+  ports:
+  - port: 3000
+    targetPort: 80
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: togglon-admin
+spec:
+  selector:
+    matchLabels:
+      app: togglon-admin
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: togglon-admin
+    spec:
+      containers:
+      - name: togglon-admin
+        image: fredrikpalmer/togglon-admin:latest
+        ports:
+        - containerPort: 80
+        env: 
+        - name: "ASPNETCORE_ENVIRONMENT"
+          value: "Test"
+        - name: "ConnectionStrings__TogglOn"
+          value: "mongodb://mongo-0.mongo:27017,mongo-1.mongo:27017,mongo-2.mongo:27017"
+
+

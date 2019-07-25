@@ -1,0 +1,86 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TogglOn.Core", "TogglOn.Core\TogglOn.Core.csproj", "{8342F72E-9AAB-4242-A5C8-22AC0A3572C3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TogglOn.Contract", "TogglOn.Contract\TogglOn.Contract.csproj", "{555FB71D-6657-44FA-B3F6-AF6B0ED784B5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TogglOn.Admin", "TogglOn.Admin\TogglOn.Admin.csproj", "{2206C588-EF3C-46AC-A1E2-14D26DAD8FDC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TogglOn.AspNetCoreClient", "TogglOn.AspNetCoreClient\TogglOn.AspNetCoreClient.csproj", "{769D7093-24B9-4CC7-B476-82FBD582C375}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TogglOn.Client.Abstractions", "TogglOn.Client.Abstractions\TogglOn.Client.Abstractions.csproj", "{585F03DA-4A71-4C40-AD90-0B1D1F839B7E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TogglOn.Client.AspNetCore", "TogglOn.Client.AspNetCore\TogglOn.Client.AspNetCore.csproj", "{C090EA3B-2488-4ABA-AF3D-A5D4607F4574}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TogglOn.DependencyInjection.AspNetCore", "TogglOn.DependencyInjection.AspNetCore\TogglOn.DependencyInjection.AspNetCore.csproj", "{FDD42B1D-0A1D-4E76-B747-99EEA3C4301B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TogglOn.DependencyInjection.Abstractions", "TogglOn.DependencyInjection.Abstractions\TogglOn.DependencyInjection.Abstractions.csproj", "{2C50B749-0F67-43BD-824D-31EFE00FB024}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TogglOn.Tests", "TogglOn.Tests\TogglOn.Tests.csproj", "{22488A0C-30A2-429D-AA8A-A098B13C6B62}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5689288D-EA4D-4F35-94C6-4F9E630641B8}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.gitignore = .gitignore
+		Dockerfile = Dockerfile
+		jenkins.yaml = jenkins.yaml
+		mongo.yaml = mongo.yaml
+		namespaces.yaml = namespaces.yaml
+		NuGet.config = NuGet.config
+		NuGet.docker.config = NuGet.docker.config
+		togglon-admin.yaml = togglon-admin.yaml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8342F72E-9AAB-4242-A5C8-22AC0A3572C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8342F72E-9AAB-4242-A5C8-22AC0A3572C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8342F72E-9AAB-4242-A5C8-22AC0A3572C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8342F72E-9AAB-4242-A5C8-22AC0A3572C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{555FB71D-6657-44FA-B3F6-AF6B0ED784B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{555FB71D-6657-44FA-B3F6-AF6B0ED784B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{555FB71D-6657-44FA-B3F6-AF6B0ED784B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{555FB71D-6657-44FA-B3F6-AF6B0ED784B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2206C588-EF3C-46AC-A1E2-14D26DAD8FDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2206C588-EF3C-46AC-A1E2-14D26DAD8FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2206C588-EF3C-46AC-A1E2-14D26DAD8FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2206C588-EF3C-46AC-A1E2-14D26DAD8FDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{769D7093-24B9-4CC7-B476-82FBD582C375}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{769D7093-24B9-4CC7-B476-82FBD582C375}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{769D7093-24B9-4CC7-B476-82FBD582C375}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{769D7093-24B9-4CC7-B476-82FBD582C375}.Release|Any CPU.Build.0 = Release|Any CPU
+		{585F03DA-4A71-4C40-AD90-0B1D1F839B7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{585F03DA-4A71-4C40-AD90-0B1D1F839B7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{585F03DA-4A71-4C40-AD90-0B1D1F839B7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{585F03DA-4A71-4C40-AD90-0B1D1F839B7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C090EA3B-2488-4ABA-AF3D-A5D4607F4574}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C090EA3B-2488-4ABA-AF3D-A5D4607F4574}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C090EA3B-2488-4ABA-AF3D-A5D4607F4574}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C090EA3B-2488-4ABA-AF3D-A5D4607F4574}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDD42B1D-0A1D-4E76-B747-99EEA3C4301B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDD42B1D-0A1D-4E76-B747-99EEA3C4301B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDD42B1D-0A1D-4E76-B747-99EEA3C4301B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDD42B1D-0A1D-4E76-B747-99EEA3C4301B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C50B749-0F67-43BD-824D-31EFE00FB024}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C50B749-0F67-43BD-824D-31EFE00FB024}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C50B749-0F67-43BD-824D-31EFE00FB024}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C50B749-0F67-43BD-824D-31EFE00FB024}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22488A0C-30A2-429D-AA8A-A098B13C6B62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22488A0C-30A2-429D-AA8A-A098B13C6B62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22488A0C-30A2-429D-AA8A-A098B13C6B62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22488A0C-30A2-429D-AA8A-A098B13C6B62}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CCBD8EBD-5FC5-4196-A5FF-0F27FEC62702}
+	EndGlobalSection
+EndGlobal
