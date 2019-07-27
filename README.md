@@ -1,7 +1,7 @@
 # TogglOn
----
+
 ## Featuretoggle framework 
----
+
 ### Configuration in Startup.cs :
 
 ```
@@ -15,25 +15,25 @@ public IServiceProvider ConfigureServices(IServiceCollection services)
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
 	app.UseTogglOnClient(togglOn =>
-    {
-        togglOn.DeclareNamespace("DevOps");
-        togglOn.DeclareEnvironment(env.EnvironmentName);
-        togglOn.DeclareFeatureGroups(groups => 
+    	{
+		togglOn.DeclareNamespace("DevOps");
+		togglOn.DeclareEnvironment(env.EnvironmentName);
+		togglOn.DeclareFeatureGroups(groups => 
 		{
 			groups.WithGroup("office")
-            groups.WithCustomerIds("1")
-            groups.WithClientIps("::1");
+            		groups.WithCustomerIds("1")
+            		groups.WithClientIps("127.0.0.1");
 		});
-        togglOn.DeclareFeatureToggles(toggles => 
+		togglOn.DeclareFeatureToggles(toggles => 
 		{
 			toggles.WithToggle("my-awesome-feature", true)
-                .WhenAny(toggle =>
-                {
-                    toggle.WithFeatureGroup("office");
-                    toggle.WithPercentage(50);
-                });
+                	.WhenAny(toggle =>
+                	{
+                    		toggle.WithFeatureGroup("office");
+                    		toggle.WithPercentage(50);
+                	});
 		});
-    });
+	});
 }
 ```
 
