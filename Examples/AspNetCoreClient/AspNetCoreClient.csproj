@@ -12,10 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TogglOn.Client.AspNetCore\TogglOn.Client.AspNetCore.csproj" />
-    <ProjectReference Include="..\TogglOn.Contract\TogglOn.Contract.csproj" />
-    <ProjectReference Include="..\TogglOn.Core\TogglOn.Core.csproj" />
-    <ProjectReference Include="..\TogglOn.DependencyInjection.AspNetCore\TogglOn.DependencyInjection.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\TogglOn.Client.AspNetCore\TogglOn.Client.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\TogglOn.Core\TogglOn.Core.csproj" />
+    <ProjectReference Include="..\..\TogglOn.DependencyInjection.AspNetCore\TogglOn.DependencyInjection.AspNetCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
