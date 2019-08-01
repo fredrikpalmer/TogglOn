@@ -1,4 +1,4 @@
-﻿namespace TogglOn.Client.AspNetCore.Evaluate
+﻿namespace TogglOn.Client.AspNetCore
 {
     public interface IFeatureToggleEvaluater
     {

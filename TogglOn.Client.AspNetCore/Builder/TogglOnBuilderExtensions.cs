@@ -3,7 +3,6 @@ using TogglOn.Client.Abstractions;
 using TogglOn.Client.Abstractions.Builder;
 using TogglOn.Client.AspNetCore;
 using TogglOn.Client.AspNetCore.Builder;
-using TogglOn.Client.AspNetCore.Evaluate;
 using TogglOn.DependencyInjection.Abstractions;
 
 namespace TogglOn.Core.Configuration

@@ -7,15 +7,15 @@ using TogglOn.Client.Abstractions;
 
 namespace TogglOn.Client.AspNetCore
 {
-    internal class InProcTogglOnDataClient : ITogglOnDataClient
+    internal class InProcTogglOnClientStrategy : ITogglOnClientStrategy
     {
         private readonly IServiceProvider _serviceProvider;
-        private readonly ILogger<InProcTogglOnDataClient> _logger;
+        private readonly ILogger<InProcTogglOnClientStrategy> _logger;
 
-        public InProcTogglOnDataClient(IServiceProvider serviceProvider)
+        public InProcTogglOnClientStrategy(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
-            _logger = (ILogger<InProcTogglOnDataClient>)_serviceProvider.GetService(typeof(ILogger<InProcTogglOnDataClient>));
+            _logger = (ILogger<InProcTogglOnClientStrategy>)_serviceProvider.GetService(typeof(ILogger<InProcTogglOnClientStrategy>));
         }
 
         public Task<TResult> ExecuteQueryAsync<TQuery, TResult>(TQuery query) where TQuery : IQuery<TResult>
@@ -31,7 +31,7 @@ namespace TogglOn.Client.AspNetCore
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Failed executing query: {typeof(TQuery).Name}");
-                throw;
+                return Task.FromException<TResult>(ex);
             }
         }
 
@@ -48,7 +48,7 @@ namespace TogglOn.Client.AspNetCore
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Failed executing command: {typeof(TCommand).Name}");
-                throw;
+                return Task.FromException<TResult>(ex);
             }
         }
     }

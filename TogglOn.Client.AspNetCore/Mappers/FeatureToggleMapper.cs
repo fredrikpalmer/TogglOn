@@ -71,7 +71,7 @@ namespace TogglOn.Client.AspNetCore.Mappers
                 case FeatureToggleRules.WhenAny:
                     return new WhenAnyRuleFactory();
                 default:
-                    return null; //TODO: return null factory
+                    return new NullFeatureToggleRuleFactory();
             }
         }
     }

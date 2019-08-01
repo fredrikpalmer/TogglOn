@@ -15,7 +15,7 @@ namespace TogglOn.Client.AspNetCore.Builder
 
         public void UseInProcClient()
         {
-            _services.AddSingleton<ITogglOnDataClient, InProcTogglOnDataClient>();
+            _services.AddSingleton<ITogglOnClientStrategy, InProcTogglOnClientStrategy>();
         }
     }
 }

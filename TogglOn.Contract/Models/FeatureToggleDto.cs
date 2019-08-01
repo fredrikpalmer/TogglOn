@@ -10,8 +10,8 @@ namespace TogglOn.Contract.Models
         public string Namespace { get; set; }
         public string Environment { get; set; }
         public bool Activated { get; set; }
-        public int TotalRequestAmount { get; internal set; } = 1;
-        public int EnabledRequestAmount { get; internal set; } = 1;
+        public int TotalRequestAmount { get; internal set; } 
+        public int EnabledRequestAmount { get; internal set; } 
         public IList<FeatureToggleRuleDto> Rules { get; set; }
 
         public FeatureToggleDto()

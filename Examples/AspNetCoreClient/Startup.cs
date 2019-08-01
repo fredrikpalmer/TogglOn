@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using StructureMap;
 using System;
 using TogglOn.Client.Abstractions.Builder;
+using TogglOn.Client.AspNetCore.Builder;
 using TogglOn.Core.Configuration;
 using TogglOn.DependencyInjection.AspNetCore;
 
@@ -46,16 +48,8 @@ namespace TogglOn.AspNetCoreClient
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
         {
-            app.UseTogglOnClient(togglOn =>
-            {
-                togglOn.DeclareNamespace("DevOps");
-                togglOn.DeclareEnvironment(env.EnvironmentName);
-                togglOn.DeclareFeatureGroups(FeatureGroups);
-                togglOn.DeclareFeatureToggles(FeatureToggles);
-            });
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -67,6 +61,14 @@ namespace TogglOn.AspNetCoreClient
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseTogglOnClient(togglOn =>
+            {
+                togglOn.DeclareNamespace("DevOps");
+                togglOn.DeclareEnvironment(env.EnvironmentName);
+                togglOn.DeclareFeatureGroups(FeatureGroups);
+                togglOn.DeclareFeatureToggles(FeatureToggles);
+            });
 
             app.UseMvc(routes =>
             {

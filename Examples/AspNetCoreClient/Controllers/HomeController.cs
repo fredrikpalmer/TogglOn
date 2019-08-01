@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using TogglOn.AspNetCoreClient.Models;
-using TogglOn.Client.AspNetCore.Evaluate;
+using TogglOn.Client.AspNetCore;
 
 namespace TogglOn.AspNetCoreClient.Controllers
 {

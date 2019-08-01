@@ -7,7 +7,7 @@ using TogglOn.Contract.Models;
 
 namespace TogglOn.Client.AspNetCore.Builder
 {
-    public class TogglOnClientBuilder : ITogglOnClientBuilder
+    public class TogglOnDataBuilder : ITogglOnDataBuilder
     {
         private readonly IServiceProvider _serviceProvider;
 
@@ -17,45 +17,46 @@ namespace TogglOn.Client.AspNetCore.Builder
         private Action<IFeatureGroupBuilder> _featureGroupBuilder;
         private Action<IFeatureToggleBuilder> _featureToggleBuilder;
 
-        public TogglOnClientBuilder(IServiceProvider serviceProvider)
+        public TogglOnDataBuilder(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
         }
 
-        public ITogglOnClientBuilder DeclareNamespace(string @namespace)
+        public ITogglOnDataBuilder DeclareNamespace(string @namespace)
         {
             _namespace = @namespace ?? throw new ArgumentNullException(nameof(@namespace));
 
             return this;
         }
 
-        public ITogglOnClientBuilder DeclareEnvironment(string environment)
+        public ITogglOnDataBuilder DeclareEnvironment(string environment)
         {
             _environment = environment ?? throw new ArgumentNullException(nameof(environment));
             return this;
         }
 
-        public ITogglOnClientBuilder DeclareFeatureGroups(Action<IFeatureGroupBuilder> featureGroupBuilder)
+        public ITogglOnDataBuilder DeclareFeatureGroups(Action<IFeatureGroupBuilder> featureGroupBuilder)
         {
             _featureGroupBuilder = featureGroupBuilder ?? throw new ArgumentNullException(nameof(featureGroupBuilder));
             return this;
         }
 
-        public ITogglOnClientBuilder DeclareFeatureToggles(Action<IFeatureToggleBuilder> featureToggleBuilder)
+        public ITogglOnDataBuilder DeclareFeatureToggles(Action<IFeatureToggleBuilder> featureToggleBuilder)
         {
             _featureToggleBuilder = featureToggleBuilder ?? throw new ArgumentNullException(nameof(featureToggleBuilder));
             return this;
         }
 
-        public ITogglOnClient Build()
+        public ITogglOnInitializer Build()
         {
             var featureGroups = BuildFeatureGroups();
             var featureToggles = BuildFeatureToggles();
 
+            var client = _serviceProvider.GetService<ITogglOnClient>();
             var contextAccessor = _serviceProvider.GetService<ITogglOnContextAccessor>();
             contextAccessor.TogglOnContext = new TogglOnContext(_namespace, _environment, featureGroups, featureToggles);
 
-            return _serviceProvider.GetService<ITogglOnClient>();
+            return new TogglOnInitializer(client, contextAccessor);
         }
 
         private IList<FeatureGroupDto> BuildFeatureGroups()

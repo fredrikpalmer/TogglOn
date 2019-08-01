@@ -1,18 +1,20 @@
-﻿namespace TogglOn.Client.AspNetCore
+﻿using System.Threading;
+
+namespace TogglOn.Client.AspNetCore
 {
     internal class TogglOnContextAccessor : ITogglOnContextAccessor
     {
-        private static TogglOnContextHolder _togglOnContextCurrent = new TogglOnContextHolder();
+        private static AsyncLocal<TogglOnContextHolder> _togglOnContextCurrent = new AsyncLocal<TogglOnContextHolder>();
 
         public TogglOnContext TogglOnContext
         {
             get
             {
-                return _togglOnContextCurrent.Context;
+                return _togglOnContextCurrent.Value?.Context;
             }
             set
             {
-                var holder = _togglOnContextCurrent;
+                var holder = _togglOnContextCurrent.Value;
                 if (holder != null)
                 {
                     holder.Context = null;
@@ -20,7 +22,7 @@
 
                 if (value != null)
                 {
-                    _togglOnContextCurrent = new TogglOnContextHolder { Context = value };
+                    _togglOnContextCurrent.Value = new TogglOnContextHolder { Context = value };
                 }
             }
         }
