@@ -1,11 +1,9 @@
 ﻿using System;
 using TogglOn.Client.Abstractions;
 using TogglOn.Client.Abstractions.Builder;
-using TogglOn.Client.AspNetCore;
-using TogglOn.Client.AspNetCore.Builder;
 using TogglOn.DependencyInjection.Abstractions;
 
-namespace TogglOn.Core.Configuration
+namespace TogglOn.Client.AspNetCore.Builder
 {
     public static class TogglOnBuilderExtensions
     {

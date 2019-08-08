@@ -1,4 +1,4 @@
-﻿namespace TogglOn.Contract.Models
+﻿namespace TogglOn.Contract.Utils
 {
     internal static class FeatureToggleRules
     {

@@ -1,19 +1,17 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using StructureMap;
-using System;
-using Microsoft.VisualStudio.Web.CodeGeneration.DotNet;
 using TogglOn.Client.Abstractions.Builder;
 using TogglOn.Client.AspNetCore.Builder;
 using TogglOn.Core.Configuration;
 using TogglOn.DependencyInjection.AspNetCore;
 
-namespace TogglOn.AspNetCoreClient
+namespace AspNetCoreClient
 {
     public class Startup
     {
