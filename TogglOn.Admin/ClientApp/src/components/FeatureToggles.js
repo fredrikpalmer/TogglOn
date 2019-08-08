@@ -2,6 +2,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actionCreators } from '../store/FeatureToggles';
+import Loading from './Loading';
 
 class FeatureToggles extends Component {
     componentWillMount() {
@@ -12,6 +13,8 @@ class FeatureToggles extends Component {
         return (
             <div>
                 {renderFeatureToggles(this.props)}
+
+                <Loading isLoading={this.props.isLoading} />
             </div>
         );
     }
