@@ -1,6 +1,4 @@
-using System;
-
-namespace TogglOn.AspNetCoreClient.Models
+namespace AspNetCoreClient.Models
 {
     public class ErrorViewModel
     {

@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics;
+using AspNetCoreClient.Models;
 using Microsoft.AspNetCore.Mvc;
-using TogglOn.AspNetCoreClient.Models;
 using TogglOn.Client.AspNetCore;
 
-namespace TogglOn.AspNetCoreClient.Controllers
+namespace AspNetCoreClient.Controllers
 {
     public class HomeController : Controller
     {

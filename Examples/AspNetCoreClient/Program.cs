@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore;
+﻿using System;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog.Web;
-using System;
 
-namespace TogglOn.AspNetCoreClient
+namespace AspNetCoreClient
 {
     public class Program
     {

@@ -18,6 +18,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.Web.CodeGeneration.Utils">
+      <HintPath>..\..\..\..\..\Users\fredr\.nuget\packages\microsoft.visualstudio.web.codegeneration.utils\2.1.9\lib\netstandard2.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Update="nlog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

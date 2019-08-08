@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StructureMap;
 using System;
+using Microsoft.VisualStudio.Web.CodeGeneration.DotNet;
 using TogglOn.Client.Abstractions.Builder;
 using TogglOn.Client.AspNetCore.Builder;
 using TogglOn.Core.Configuration;
@@ -23,7 +24,9 @@ namespace TogglOn.AspNetCoreClient
 
         public IConfiguration Configuration { get; }
 
+
         // This method gets called by the runtime. Use this method to add services to the container.
+
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.Configure<CookiePolicyOptions>(options =>
@@ -47,7 +50,9 @@ namespace TogglOn.AspNetCoreClient
             return container.GetInstance<IServiceProvider>();
         }
 
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
         public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -69,6 +74,8 @@ namespace TogglOn.AspNetCoreClient
                 togglOn.DeclareFeatureGroups(FeatureGroups);
                 togglOn.DeclareFeatureToggles(FeatureToggles);
             });
+
+            
 
             app.UseMvc(routes =>
             {
@@ -96,5 +103,10 @@ namespace TogglOn.AspNetCoreClient
                     toggle.WithPercentage(50);
                 });
         }
+    }
+
+    class MyClass
+    {
+        
     }
 }
