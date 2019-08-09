@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './Loading.css';
 
 class Loading extends Component {
@@ -17,8 +18,8 @@ class Loading extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.isLoading !== prevProps.isLoading) {
-            if (this.props.isLoading) {
+        if (this.props.active !== prevProps.active) {
+            if (this.props.active) {
                 this.delayedActivate(250);
             } else {
                 this.delayedDeactivate(1000);
@@ -28,7 +29,7 @@ class Loading extends Component {
 
     delayedActivate(delay) {
         this.timers.push(setTimeout(function() {
-            if (this.props.isLoading) {
+            if (this.props.active) {
                 this.setActive(true);
             } 
 
@@ -36,7 +37,7 @@ class Loading extends Component {
     }
 
     delayedDeactivate(delay) {
-        this.timers.push(setTimeout(async function () {
+        this.timers.push(setTimeout(function () {
             if (this.state.active) {
                 this.setActive(false);
             }
@@ -73,5 +74,7 @@ class Loading extends Component {
             );
         }
     }
-    
-    export default Loading;
+
+export default connect(
+    state => state.loading
+)(Loading);

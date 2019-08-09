@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 import * as FeatureToggles from './FeatureToggles';
 import * as FeatureGroups from './FeatureGroups';
+import * as Loading from './Loading';
 
 export default function configureStore(history, initialState) {
     const reducers = {
         featureToggles: FeatureToggles.reducer,
-        featureGroups: FeatureGroups.reducer
+        featureGroups: FeatureGroups.reducer,
+        loading: Loading.reducer
     };
 
     const middleware = [

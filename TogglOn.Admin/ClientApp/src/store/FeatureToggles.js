@@ -1,18 +1,22 @@
-﻿const requestFeatureTogglesType = 'REQUEST_FEATURETOGGLES';
+﻿import { toggleLoadingType } from './Loading';
+
+const requestFeatureTogglesType = 'REQUEST_FEATURETOGGLES';
 const receiveFeatureTogglesType = 'RECEIVE_FEATURETOGGLES';
 const requestUpdateFeatureToggleActivatedType = 'REQUEST_UPDATE_FEATURETOGGLE_ACTIVATED';
 const receiveUpdateFeatureToggleActivatedType = 'RECEIVE_UPDATE_FEATURETOGGLE_ACTIVATED';
-const initialState = { featureToggles: [], isLoading: false };
+const initialState = { featureToggles: [] };
 
 export const actionCreators = {
     requestFeatureToggles: () => async (dispatch) => {
         dispatch({ type: requestFeatureTogglesType });
+        dispatch({ type: toggleLoadingType, active: true });
 
         const url = "api/featuretoggles";
         const response = await fetch(url);
         const featureToggles = await response.json();
 
         dispatch({ type: receiveFeatureTogglesType, featureToggles });
+        dispatch({ type: toggleLoadingType, active: false });
     },
 
     requestUpdateFeatureToggleActivated: (featureToggle) => async (dispatch) => {
@@ -43,23 +47,20 @@ export const reducer = (state, action) => {
 
     if (action.type === requestFeatureTogglesType) {
         return {
-            ...state,
-            isLoading: true
+            ...state
         };
     }
 
     if (action.type === receiveFeatureTogglesType) {
         return {
             ...state,
-            featureToggles: action.featureToggles,
-            isLoading: false
+            featureToggles: action.featureToggles
         };
     }
 
     if (action.type === requestUpdateFeatureToggleActivatedType) {
         return {
-            ...state,
-            isLoading: true
+            ...state
         };
     }
 
@@ -71,8 +72,7 @@ export const reducer = (state, action) => {
 
         return {
             ...state,
-            featureToggles: [...featureToggles, { ...featureToggle, activated: action.activated }],
-            isLoading: false
+            featureToggles: [...featureToggles, { ...featureToggle, activated: action.activated }]
         };
     }
 

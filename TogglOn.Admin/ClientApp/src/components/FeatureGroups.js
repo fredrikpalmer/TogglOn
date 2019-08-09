@@ -2,7 +2,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actionCreators } from '../store/FeatureGroups';
-import Loading from './Loading';
 
 class FeatureGroups extends Component {
     componentWillMount() {
@@ -14,7 +13,6 @@ class FeatureGroups extends Component {
             <div>
                 {renderFeatureGroups(this.props)}
 
-                <Loading isLoading={this.props.isLoading} />
             </div>
         );
     }
