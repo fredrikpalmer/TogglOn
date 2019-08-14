@@ -36,6 +36,8 @@ function renderFeatureGroups(props) {
 }
 
 export default connect(
-    state => state.featureGroups,
+    state => {
+        return { featureGroups: state.featureGroups };
+    },
     dispatch => bindActionCreators(actionCreators, dispatch)
 )(FeatureGroups);

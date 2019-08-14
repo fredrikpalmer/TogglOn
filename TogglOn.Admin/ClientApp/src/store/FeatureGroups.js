@@ -1,20 +1,26 @@
-﻿import { toggleLoadingType } from './Loading';
+﻿import { loadingType } from './Spinner';
+import { addError } from './Error';
 
 const requestFeatureGroupsType = 'REQUEST_FEATUREGROUPS';
 const receiveFeatureGroupsType = 'RECEIVE_FEATUREGROUPS';
-const initialState = { featureGroups: [] };
+const initialState = [];
 
 export const actionCreators = {
     requestFeatureGroups: () => async (dispatch) => {
         dispatch({ type: requestFeatureGroupsType });
-        dispatch({ type: toggleLoadingType, active: true });
+        dispatch({ type: loadingType, active: true });
 
         const url = "api/featuregroups";
         const response = await fetch(url);
-        const featureGroups = await response.json();
+        if(response.status === 200){
+            const featureGroups = await response.json();
 
-        dispatch({ type: receiveFeatureGroupsType, featureGroups });
-        dispatch({ type: toggleLoadingType, active: false });
+            dispatch({ type: receiveFeatureGroupsType, featureGroups });
+        }else{
+            dispatch(addError(response.statusText));
+        }
+
+        dispatch({ type: loadingType, active: false });
     }
 };
 
@@ -22,16 +28,13 @@ export const reducer = (state, action) => {
     state = state || initialState;
 
     if (action.type === requestFeatureGroupsType) {
-        return {
-            ...state
-        };
+        return state;
     }
 
     if (action.type === receiveFeatureGroupsType) {
-        return {
-            ...state,
-            featureGroups: action.featureGroups
-        };
+        return [
+            ...action.featureGroups
+        ];
     }
 
     return state;

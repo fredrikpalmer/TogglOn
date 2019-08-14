@@ -1,8 +1,8 @@
 ﻿import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Loading.css';
+import './Spinner.css';
 
-class Loading extends Component {
+class Spinner extends Component {
     constructor(props) {
         super(props);
         this.delayedActivate = this.delayedActivate.bind(this);
@@ -18,18 +18,18 @@ class Loading extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.active !== prevProps.active) {
-            if (this.props.active) {
+        if (this.props.spinner.active !== prevProps.spinner.active) {
+            if (this.props.spinner.active) {
                 this.delayedActivate(250);
             } else {
-                this.delayedDeactivate(1000);
+                this.delayedDeactivate(500);
             }
         }
     }
 
     delayedActivate(delay) {
         this.timers.push(setTimeout(function() {
-            if (this.props.active) {
+            if (this.props.spinner.active) {
                 this.setActive(true);
             } 
 
@@ -76,5 +76,7 @@ class Loading extends Component {
     }
 
 export default connect(
-    state => state.loading
-)(Loading);
+    state => {
+        return { spinner: state.spinner }
+    }
+)(Spinner);

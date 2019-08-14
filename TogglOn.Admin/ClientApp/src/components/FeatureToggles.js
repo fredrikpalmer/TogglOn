@@ -41,13 +41,17 @@ function renderFeatureToggles(props) {
                         <td>{toggle.namespace}</td>
                         <td>{toggle.environment}</td>
                     </tr>
-                ) : renderMessage()}
+                ) : renderMessage(props)}
             </tbody>
         </table>
     );
 }
 
-function renderMessage() {
+function renderMessage(props) {
+    if(props.spinner.active){
+        return null;
+    }
+
     return (
         <tr>
             <td colSpan='4'>
@@ -60,6 +64,8 @@ function renderMessage() {
 }
 
 export default connect(
-    state => state.featureToggles,
+    state => {
+        return { spinner: state.spinner, featureToggles: state.featureToggles }
+    },
     dispatch => bindActionCreators(actionCreators, dispatch)
 )(FeatureToggles);
