@@ -1,5 +1,6 @@
-﻿const errorType = 'ERROR';
+﻿import { spinnerOnType } from './Spinner';
 
+const errorType = 'ERROR';
 const initialState = [];
 
 export const addError = (message) => {
@@ -16,7 +17,7 @@ export const reducer = (state, action) => {
         return [{ message: action.message }];
     }
 
-    if(action.type === '@@router/LOCATION_CHANGE'){
+    if(action.type === spinnerOnType){
         return [];
     }
 

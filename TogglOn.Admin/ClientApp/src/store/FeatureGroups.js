@@ -1,4 +1,4 @@
-﻿import { loadingType } from './Spinner';
+﻿import { spinnerOn, spinnerOff } from './Spinner';
 import { addError } from './Error';
 
 const requestFeatureGroupsType = 'REQUEST_FEATUREGROUPS';
@@ -8,7 +8,7 @@ const initialState = [];
 export const actionCreators = {
     requestFeatureGroups: () => async (dispatch) => {
         dispatch({ type: requestFeatureGroupsType });
-        dispatch({ type: loadingType, active: true });
+        dispatch(spinnerOn());
 
         const url = "api/featuregroups";
         const response = await fetch(url);
@@ -20,7 +20,7 @@ export const actionCreators = {
             dispatch(addError(response.statusText));
         }
 
-        dispatch({ type: loadingType, active: false });
+        dispatch(spinnerOff());
     }
 };
 

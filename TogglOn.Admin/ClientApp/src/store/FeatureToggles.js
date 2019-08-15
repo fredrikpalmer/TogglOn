@@ -1,4 +1,4 @@
-﻿import { loadingType } from './Spinner';
+﻿import { spinnerOn, spinnerOff } from './Spinner';
 import { addError } from './Error';
 
 const requestFeatureTogglesType = 'REQUEST_FEATURETOGGLES';
@@ -10,7 +10,7 @@ const initialState = [];
 export const actionCreators = {
     requestFeatureToggles: () => async (dispatch) => {
         dispatch({ type: requestFeatureTogglesType });
-        dispatch({ type: loadingType, active: true });
+        dispatch(spinnerOn());
 
         const url = "api/featuretoggles";
         const response = await fetch(url);
@@ -22,12 +22,12 @@ export const actionCreators = {
             dispatch(addError(response.statusText));
         }
 
-        dispatch({ type: loadingType, active: false });
+        dispatch(spinnerOff());
     },
 
     requestUpdateFeatureToggleActivated: (featureToggle) => async (dispatch) => {
         dispatch({ type: requestUpdateFeatureToggleActivatedType });
-        dispatch({ type: loadingType, active: true });
+        dispatch(spinnerOn());
 
 
         const id = featureToggle.id;
@@ -48,7 +48,7 @@ export const actionCreators = {
             dispatch(addError(response.statusText));
         }
 
-        dispatch({ type: loadingType, active: false });
+        dispatch(spinnerOff());
     }
 };
 
@@ -70,12 +70,18 @@ export const reducer = (state, action) => {
     }
 
     if (action.type === receiveUpdateFeatureToggleActivatedType) {
-        const featureToggles = state;
+        return [
+            ...state.map(featureToggle => {
+                if(featureToggle.id === action.id){
+                    return {
+                        ...featureToggle,
+                        activated: action.activated
+                    };
+                }
 
-        const index = featureToggles.findIndex(value => value.id === action.id);
-        const featureToggle = featureToggles.splice(index, 1)[0];
-
-        return [...featureToggles, { ...featureToggle, activated: action.activated }];
+                return featureToggle;
+            }), 
+        ];
     }
 
     return state;
