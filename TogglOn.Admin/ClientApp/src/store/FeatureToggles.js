@@ -60,9 +60,7 @@ export const reducer = (state, action) => {
     }
 
     if (action.type === receiveFeatureTogglesType) {
-        return [
-            ...action.featureToggles
-        ];
+        return action.featureToggles;
     }
 
     if (action.type === requestUpdateFeatureToggleActivatedType) {
@@ -70,18 +68,16 @@ export const reducer = (state, action) => {
     }
 
     if (action.type === receiveUpdateFeatureToggleActivatedType) {
-        return [
-            ...state.map(featureToggle => {
-                if(featureToggle.id === action.id){
-                    return {
-                        ...featureToggle,
-                        activated: action.activated
-                    };
-                }
+        return state.map(featureToggle => {
+            if(featureToggle.id === action.id){
+                return {
+                    ...featureToggle,
+                    activated: action.activated
+                };
+            }
 
-                return featureToggle;
-            }), 
-        ];
+            return featureToggle;
+        });
     }
 
     return state;

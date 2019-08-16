@@ -1,7 +1,4 @@
 ﻿import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { actionCreators } from '../store/FeatureGroups';
 
 class FeatureGroups extends Component {
     componentWillMount() {
@@ -35,9 +32,4 @@ function renderFeatureGroups(props) {
     );
 }
 
-export default connect(
-    state => {
-        return { featureGroups: state.featureGroups };
-    },
-    dispatch => bindActionCreators(actionCreators, dispatch)
-)(FeatureGroups);
+export default FeatureGroups;

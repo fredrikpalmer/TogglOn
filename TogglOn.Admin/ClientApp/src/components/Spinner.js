@@ -1,5 +1,4 @@
 ﻿import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import './Spinner.css';
 
 class Spinner extends Component {
@@ -75,8 +74,4 @@ class Spinner extends Component {
         }
     }
 
-export default connect(
-    state => {
-        return { spinner: state.spinner }
-    }
-)(Spinner);
+export default Spinner;

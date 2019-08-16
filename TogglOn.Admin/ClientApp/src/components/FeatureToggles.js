@@ -1,7 +1,4 @@
 ﻿import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { actionCreators } from '../store/FeatureToggles';
 
 class FeatureToggles extends Component {
     componentWillMount() {
@@ -63,9 +60,4 @@ function renderMessage(props) {
     );
 }
 
-export default connect(
-    state => {
-        return { spinner: state.spinner, featureToggles: state.featureToggles }
-    },
-    dispatch => bindActionCreators(actionCreators, dispatch)
-)(FeatureToggles);
+export default FeatureToggles;

@@ -1,18 +1,18 @@
 import React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
 import NavMenu from './NavMenu';
-import Spinner from './Spinner';
-import Error from './Error';
+import VisibleSpinner from './VisibleSpinner';
+import VisibleError from './VisibleError';
 
 export default props => (
   <Grid fluid>
-    <Spinner />
+    <VisibleSpinner />
     <Row>
       <Col sm={3}>
         <NavMenu />
       </Col>
       <Col sm={9}>
-        <Error />
+        <VisibleError />
 
         {props.children}
       </Col>
