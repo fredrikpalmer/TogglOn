@@ -10,13 +10,13 @@ using TogglOn.Contract.Commands;
 
 namespace TogglOn.Client.AspNetCore
 {
-    internal class FeatureToggleEvaluater : IFeatureToggleEvaluater
+    internal class FeatureToggleEvaluator : IFeatureToggleEvaluator
     {
         private readonly ITogglOnClient _client;
         private readonly ITogglOnContextAccessor _togglOnContextAccessor;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public FeatureToggleEvaluater(ITogglOnClient client, ITogglOnContextAccessor togglOnContextAccessor, IHttpContextAccessor httpContextAccessor)
+        public FeatureToggleEvaluator(ITogglOnClient client, ITogglOnContextAccessor togglOnContextAccessor, IHttpContextAccessor httpContextAccessor)
         {
             _client = client;
             _togglOnContextAccessor = togglOnContextAccessor;
@@ -33,7 +33,7 @@ namespace TogglOn.Client.AspNetCore
 
                 var enabled = toggle.IsEnabled();
 
-                IncrementUsageStatisticsAsync(toggle.Name, enabled);
+                IncrementUsageStatisticsAsync(toggle.Name, enabled).Wait();
 
                 return enabled;
             }

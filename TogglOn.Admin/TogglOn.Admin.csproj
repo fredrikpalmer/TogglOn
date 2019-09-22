@@ -17,14 +17,19 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.7.9" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
     <PackageReference Include="StructureMap.Microsoft.DependencyInjection" Version="2.0.0" />
-    <PackageReference Include="TogglOn.Core" Version="1.0.0" />
-    <PackageReference Include="TogglOn.DependencyInjection.AspNetCore" Version="1.0.0" />
+    <!--<PackageReference Include="TogglOn.Core" Version="1.0.1" />
+    <PackageReference Include="TogglOn.DependencyInjection.AspNetCore" Version="1.0.0" />-->
   </ItemGroup>
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TogglOn.Core\TogglOn.Core.csproj" />
+    <ProjectReference Include="..\TogglOn.DependencyInjection.AspNetCore\TogglOn.DependencyInjection.AspNetCore.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

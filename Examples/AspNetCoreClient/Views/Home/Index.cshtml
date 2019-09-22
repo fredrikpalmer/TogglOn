@@ -1,8 +1,10 @@
-﻿@{
+﻿
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-@inject TogglOn.Client.AspNetCore.IFeatureToggleEvaluater evaluater
+@inject TogglOn.Client.AspNetCore.IFeatureToggleEvaluator Evaluator
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
@@ -15,7 +17,7 @@
             <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
             <div class="carousel-caption" role="option">
 
-                @if(evaluater.IsEnabled("my-awesome-feature"))
+                @if(Evaluator.IsEnabled("my-awesome-feature"))
                 {
                     <h1>On</h1>
                 }

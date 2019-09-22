@@ -7,9 +7,9 @@ namespace AspNetCoreClient.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index([FromServices] IFeatureToggleEvaluater evaluater)
+        public IActionResult Index([FromServices] IFeatureToggleEvaluator evaluator)
         {
-            if (evaluater.IsEnabled("my-awesome-feature")) return View();
+            if (evaluator.IsEnabled("my-awesome-feature")) return View();
 
             return NotFound();
         }

@@ -6,8 +6,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.1" />
-    <PackageReference Include="TogglOn.Contract" Version="1.0.1" />
-    <PackageReference Include="TogglOn.DependencyInjection.Abstractions" Version="1.0.0" />
+    <!--<PackageReference Include="TogglOn.Contract" Version="1.0.1" />
+    <PackageReference Include="TogglOn.DependencyInjection.Abstractions" Version="1.0.0" />-->
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TogglOn.Contract\TogglOn.Contract.csproj" />
+    <ProjectReference Include="..\TogglOn.DependencyInjection.Abstractions\TogglOn.DependencyInjection.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

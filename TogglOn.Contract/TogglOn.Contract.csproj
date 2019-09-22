@@ -4,8 +4,12 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <PackageReference Include="TogglOn.Client.Abstractions" Version="1.0.1" />
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <ProjectReference Include="..\TogglOn.Client.Abstractions\TogglOn.Client.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

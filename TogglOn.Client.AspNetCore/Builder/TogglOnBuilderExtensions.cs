@@ -19,7 +19,7 @@ namespace TogglOn.Client.AspNetCore.Builder
             services.AddSingleton<ITogglOnContextAccessor, TogglOnContextAccessor>();
             services.AddSingleton<ITogglOnClient, TogglOnClient>();
 
-            services.AddSingleton<IFeatureToggleEvaluater, FeatureToggleEvaluater>();
+            services.AddSingleton<IFeatureToggleEvaluator, FeatureToggleEvaluator>();
 
             return builder;
         }

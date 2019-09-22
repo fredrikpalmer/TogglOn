@@ -1,6 +1,6 @@
 ﻿namespace TogglOn.Client.AspNetCore
 {
-    public interface IFeatureToggleEvaluater
+    public interface IFeatureToggleEvaluator
     {
         bool IsEnabled(string featureToggleName);
     }
