@@ -10,7 +10,7 @@ WORKDIR /src
 COPY ["TogglOn.Admin/TogglOn.Admin.csproj", "TogglOn.Admin/"]
 RUN dotnet restore "TogglOn.Admin/TogglOn.Admin.csproj"
 COPY . .
-WORKDIR "/src/TogglOn.Admin"
+WORKDIR /src/TogglOn.Admin
 RUN dotnet build "TogglOn.Admin.csproj" -c Release -o /app
 
 FROM build AS publish
