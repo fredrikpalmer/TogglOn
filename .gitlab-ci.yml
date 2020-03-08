@@ -2,7 +2,6 @@ image: docker:latest
 
 stages:
 - build
-- push
 
 services:
   - docker:dind
@@ -14,13 +13,6 @@ build:
   stage: build
   script:
     - docker build --target build -t $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHORT_SHA .
-  tags:
-    - docker
-
-push:
-  stage: push
-  script:
-    - docker pull $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHORT_SHA
     - docker tag $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHORT_SHA $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE:CI_COMMIT_SHORT_SHA
     - docker tag $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHORT_SHA $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE:latest
     - docker push $CI_REGISTRY_IMAGE:CI_COMMIT_SHORT_SHA
