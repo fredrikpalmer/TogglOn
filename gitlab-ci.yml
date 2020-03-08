@@ -1,0 +1,37 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+before_script:
+  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+
+build:
+  stage: build
+  script:
+    - docker build --target build -t "$CI_REGISTRY_USER/togglon:latest" .
+
+test:
+  stage: test
+  script:
+    - docker build --target test -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
+
+push:
+  stage: push
+  script:
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+
+test:
+  stage: deploy
+  script:
+    - kubectl apply -f togglon-admin.yaml
+
+stage:
+  stage: deploy
+  script:
+    - kubectl apply -f togglon-admin.yaml
+
+prod:
+  stage: deploy
+  script:
+    - kubectl apply -f togglon-admin.yaml

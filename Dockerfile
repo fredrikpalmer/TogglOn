@@ -7,8 +7,6 @@ RUN apt-get update -yq && apt-get upgrade -yq && apt-get install -yq curl git na
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get install -yq nodejs build-essential
 
 WORKDIR /src
-COPY ["NuGet.docker.config", "NuGet.config"] 
-COPY ["packages", "packages/"]
 COPY ["TogglOn.Admin/TogglOn.Admin.csproj", "TogglOn.Admin/"]
 RUN dotnet restore "TogglOn.Admin/TogglOn.Admin.csproj"
 COPY . .
