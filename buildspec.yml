@@ -22,7 +22,7 @@ phases:
     commands: 
       - ls
       - dotnet SonarScanner.MSBuild.dll begin /d:sonar.login=$LOGIN /d:sonar.host.url=$HOST /k:$Project /o:$Organization
-      - dotnet build TogglOn.Core\TogglOn.Core.csproj
+      - dotnet build ./TogglOn.Core/TogglOn.Core.csproj
       - dotnet SonarScanner.MSBuild.dll end /d:sonar.login=$LOGIN
       - sleep 5
       - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project >result.json
