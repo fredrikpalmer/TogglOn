@@ -15,7 +15,7 @@ phases:
       - yum update -y
       - yum install -y jq
       - wget https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/4.10.0.19059/sonar-scanner-msbuild-4.10.0.19059-netcoreapp3.0.zip
-      - mkdir sonar-scanner-msbuild && sonar-scanner-msbuild
+      - mkdir sonar-scanner-msbuild && cd sonar-scanner-msbuild
       - unzip ../sonar-scanner-msbuild-4.10.0.19059-netcoreapp3.0.zip
       - cd ..
       - export PATH=$PATH:/sonar-scanner-msbuild/
