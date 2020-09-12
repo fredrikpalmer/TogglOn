@@ -1,0 +1,29 @@
+version: 0.2
+env:
+  secrets-manager:
+    LOGIN: prod/sonar:sonartoken
+    HOST: prod/sonar:HOST
+    Organization: prod/sonar:Organization
+    Project: prod/sonar:Project
+phases:
+  install:
+    runtime-versions:
+      java: openjdk8
+      dotnet: latest
+  pre_build:
+    commands:
+      - apt-get update
+      - apt-get install -y jq
+      - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip
+      - unzip ./sonar-scanner-cli-3.3.0.1492-linux.zip
+      - export PATH=$PATH:/sonar-scanner-3.3.0.1492-linux/bin/
+  build:
+    commands:
+      - dotnet test     
+      - dotnet SonarScanner.MSBuild.dll begin /d:sonar.login=$LOGIN /d:sonar.host.url=$HOST /k:$Project /d:sonar.organization=$Organization
+      - dotnet build
+      - dotnet SonarScanner.MSBuild.dll end
+      - sleep 5
+      - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project >result.json
+      - cat result.json
+      - if [ $(jq -r '.projectStatus.status' result.json) = ERROR ] ; then $CODEBUILD_BUILD_SUCCEEDING -eq 0 ;fi
