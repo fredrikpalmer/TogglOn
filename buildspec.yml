@@ -15,15 +15,15 @@ phases:
       - yum update -y
       - yum install -y jq
       - wget https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/4.10.0.19059/sonar-scanner-msbuild-4.10.0.19059-netcoreapp3.0.zip
-      - mkdir sonar-scanner-msbuild && cd sonar-scanner-msbuild
       - unzip ../sonar-scanner-msbuild-4.10.0.19059-netcoreapp3.0.zip
-      - cd ..
-      - export PATH=$PATH:/sonar-scanner-msbuild/
+      - ls
+      - export PATH=$PATH:/
   build:
     commands: 
-      - dotnet SonarScanner.MSBuild.dll begin /d:sonar.login=$LOGIN /d:sonar.host.url=$HOST /k:$Project /d:sonar.organization=$Organization
+      - ls
+      - dotnet SonarScanner.MSBuild.dll begin /d:sonar.login=$LOGIN /d:sonar.host.url=$HOST /k:$Project /o:$Organization
       - dotnet build
-      - dotnet SonarScanner.MSBuild.dll end
+      - dotnet SonarScanner.MSBuild.dll end /d:sonar.login=$LOGIN
       - sleep 5
       - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project >result.json
       - cat result.json
