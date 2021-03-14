@@ -35,7 +35,7 @@ namespace AspNetCoreClient
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc();
             services.AddHttpContextAccessor();
 
             services
@@ -66,6 +66,8 @@ namespace AspNetCoreClient
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.UseRouting();
+
             app.UseTogglOnClient(togglOn =>
             {
                 togglOn.DeclareNamespace("DevOps");
@@ -76,11 +78,11 @@ namespace AspNetCoreClient
 
             
 
-            app.UseMvc(routes =>
+            app.UseEndpoints(routes =>
             {
-                routes.MapRoute(
+                routes.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
 
@@ -102,10 +104,5 @@ namespace AspNetCoreClient
                     toggle.WithPercentage(50);
                 });
         }
-    }
-
-    class MyClass
-    {
-        
     }
 }
